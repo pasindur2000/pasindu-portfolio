@@ -14,6 +14,10 @@ interface Project {
   github?: string;
   tags: string[];
   caseStudy?: string;
+  role?: string;
+  overview?: string;
+  problem?: string;
+  solution?: string;
 }
 
 function ProjectCard({ project }: { project: Project }) {
@@ -30,7 +34,6 @@ function ProjectCard({ project }: { project: Project }) {
 
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      // Prevent body scroll when modal is open
       document.body.style.overflow = "hidden";
     }
 
@@ -56,6 +59,62 @@ function ProjectCard({ project }: { project: Project }) {
       document.removeEventListener("keydown", handleEscape);
     };
   }, [isOpen]);
+
+  // Get case study content based on project title or caseStudy field
+  const getCaseStudyContent = () => {
+    // First priority: Check if project has custom fields defined
+    if (project.role || project.overview || project.problem || project.solution) {
+      return {
+        role: project.role || 'Developer',
+        overview: project.overview || project.desc,
+        problem: project.problem || 'This project addressed specific business challenges.',
+        solution: project.solution || `${project.title} provides an effective solution.`
+      };
+    }
+
+    // Second priority: Match by title or caseStudy field
+    const projectIdentifier = (project.title.toLowerCase() + ' ' + (project.caseStudy || '')).toLowerCase();
+
+    // Order Management System (OMS)
+    if (projectIdentifier.includes('order management') || projectIdentifier.includes('oms')) {
+      return {
+        role: 'Full stack Developer',
+        overview: 'A scalable Order Management System (OMS), built to streamline workflows, manage inventory, and optimize order tracking and delivery with a responsive full-stack architecture using PHP, MySQL, and React.',
+        problem: 'Managing orders across multiple Sri Lankan couriers can be time-consuming and error-prone, with manual tracking, delayed updates, and difficulty handling delivery issues.',
+        solution: 'A smart Order Management System (OMS) that integrates with multiple courier APIs to automatically track orders, update statuses in real time, and simplify overall delivery management.'
+      };
+    }
+
+    // Gemify App
+    if (projectIdentifier.includes('gemify')) {
+      return {
+        role: 'Frontend Developer (UI & UX Design)',
+        overview: 'A modern, fully redesigned mobile application that enhances the Gemify platform with new functionalities and a refined user experience. The app focuses on seamless performance, responsive design, and real-time interaction to deliver an optimized gem trading and management experience.',
+        problem: 'Gem traders and businessmen needed a simple yet powerful tool to manage and grow their gem business efficiently.',
+        solution: 'A redesigned mobile app enhancing the Gemify platform with improved performance, real-time interaction, and an optimized user experience.'
+      };
+    }
+
+    // Fardar Express Logistics
+    if (projectIdentifier.includes('fardar') || projectIdentifier.includes('express logistics')) {
+      return {
+        role: 'Web Developer (UI & UX Design)',
+        overview: 'Enhanced website for a global logistics partner with a clear, fast, and smooth user experience.',
+        problem: 'The previous logistics website lacked clear navigation, speed, and overall usability.',
+        solution: 'An enhanced website designed for a global logistics partner, offering a clear, fast, and seamless user experience.'
+      };
+    }
+
+    // Default fallback
+    return {
+      role: 'Web Developer',
+      overview: project.desc,
+      problem: 'This project addressed specific business challenges and requirements.',
+      solution: `${project.title} was developed to provide an effective solution with modern technologies and best practices.`
+    };
+  };
+
+  const caseStudyContent = getCaseStudyContent();
 
   return (
     <div
@@ -118,12 +177,11 @@ function ProjectCard({ project }: { project: Project }) {
         <ul className="flex flex-wrap items-center mt-2 -ml-2 list-none">
           {project.tags.map((tag) => (
             <li key={tag}>
-        <Link href={`/projects/tag/${kebabCase(tag)}`} passHref>
-  <a className="m-1 rounded-lg text-sm bg-fun-pink-dark py-1 px-2 cursor-pointer hover:opacity-75">
-    {tag}
-  </a>
-</Link>
-
+              <Link href={`/projects/tag/${kebabCase(tag)}`} passHref>
+                <a className="m-1 rounded-lg text-sm bg-fun-pink-dark py-1 px-2 cursor-pointer hover:opacity-75">
+                  {tag}
+                </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -171,40 +229,14 @@ function ProjectCard({ project }: { project: Project }) {
               {/* Title + Role */}
               <div>
                 <h2 className="text-2xl font-semibold mb-1">{project.title}</h2>
-                <p className="text-sm text-gray-400">
-                  {project.caseStudy === 'oms' 
-                    ? 'Fullstack Developer (Backend & System Integration)'
-                    : project.caseStudy === 'gemify'
-                    ? 'Mobile Developer (UX & Real-Time Functionality)'
-                    : 'Mobile Developer (Security & Performance)'
-                  }
-                </p>
+                <p className="text-sm text-gray-400">{caseStudyContent.role}</p>
               </div>
 
               {/* Overview */}
               <div>
                 <h3 className="text-lg font-semibold mb-2">Overview</h3>
                 <p className="text-gray-300 leading-relaxed">
-                  {project.caseStudy === 'oms' ? (
-                    <>
-                      Developed a comprehensive Order Management System (OMS) to handle order creation, 
-                      tracking, and inventory updates for a mid-sized retail operation. The system 
-                      centralized all order data and improved communication between sales, warehouse, 
-                      and delivery teams.
-                    </>
-                  ) : project.caseStudy === 'gemify' ? (
-                    <>
-                      Developed Gemify, a modern gem trading platform that connects buyers and sellers 
-                      in real-time. Focused on creating a visually refined, intuitive mobile experience 
-                      that simplifies gem listings, live price tracking, and secure transactions.
-                    </>
-                  ) : (
-                    <>
-                      Contributed to the development and enhancement of <b>{project.title}</b>, 
-                      a digital lifestyle application. Focused on improving security, user 
-                      experience, and performance for a growing customer base.
-                    </>
-                  )}
+                  {caseStudyContent.overview}
                 </p>
               </div>
 
@@ -215,24 +247,7 @@ function ProjectCard({ project }: { project: Project }) {
                     <span>🔒</span> Problem
                   </h4>
                   <p className="text-gray-300 text-sm mt-2 leading-relaxed">
-                    {project.caseStudy === 'oms' ? (
-                      <>
-                        The previous manual process caused order delays, stock mismatches, and lacked 
-                        real-time visibility into order status. The business needed a reliable web-based 
-                        solution to automate operations and maintain accurate inventory records.
-                      </>
-                    ) : project.caseStudy === 'gemify' ? (
-                      <>
-                        Traditional gem trading involved limited transparency and delayed communication 
-                        between traders. Users needed a platform that allowed them to browse, buy, and 
-                        sell gems instantly with trust and ease.
-                      </>
-                    ) : (
-                      <>
-                        The app required strong security features to handle sensitive financial data 
-                        while maintaining a smooth, user-friendly experience.
-                      </>
-                    )}
+                    {caseStudyContent.problem}
                   </p>
                 </div>
 
@@ -241,26 +256,7 @@ function ProjectCard({ project }: { project: Project }) {
                     <span>⚡</span> Solution
                   </h4>
                   <p className="text-gray-300 text-sm mt-2 leading-relaxed">
-                    {project.caseStudy === 'oms' ? (
-                      <>
-                        Built a PHP-based web application with MySQL for database management and a 
-                        responsive Bootstrap frontend. Integrated automated order workflows, dynamic 
-                        inventory tracking, and user roles (admin, staff, and clients) to improve 
-                        coordination and reduce manual effort.
-                      </>
-                    ) : project.caseStudy === 'gemify' ? (
-                      <>
-                        Designed and implemented a Flutter-based mobile application with an intuitive 
-                        user interface, integrated real-time updates for listings, and secure user 
-                        authentication. Added advanced filtering, push notifications, and instant 
-                        messaging to support seamless trading experiences.
-                      </>
-                    ) : (
-                      <>
-                        Designed and implemented native modules with secure data handling, improved 
-                        encryption layers, and optimized app performance.
-                      </>
-                    )}
+                    {caseStudyContent.solution}
                   </p>
                 </div>
               </div>
@@ -278,71 +274,6 @@ function ProjectCard({ project }: { project: Project }) {
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              {/* Impact & Results */}
-              <div className="mt-6">
-                <h3 className="text-lg font-semibold mb-3">Impact & Results</h3>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  {project.caseStudy === 'oms' ? (
-                    <>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400 mt-1">✓</span>
-                        <span>Reduced order processing time by 45% with automated updates</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400 mt-1">✓</span>
-                        <span>Improved stock accuracy through synchronized database operations</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400 mt-1">✓</span>
-                        <span>Enhanced transparency with real-time order tracking dashboard</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400 mt-1">✓</span>
-                        <span>Simplified user access management with secure authentication</span>
-                      </li>
-                    </>
-                  ) : project.caseStudy === 'gemify' ? (
-                    <>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400 mt-1">✓</span>
-                        <span>Enabled real-time gem listing updates and instant buyer–seller communication</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400 mt-1">✓</span>
-                        <span>Increased user engagement with a modern, visually appealing UI</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400 mt-1">✓</span>
-                        <span>Improved transaction reliability through Firebase-backed security</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400 mt-1">✓</span>
-                        <span>Enhanced overall trading speed and transparency</span>
-                      </li>
-                    </>
-                  ) : null}
-                </ul>
-              </div>
-
-              {/* Architecture */}
-              <div className="mt-6">
-                <h3 className="text-lg font-semibold mb-2">Architecture</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  {project.caseStudy === 'oms' ? (
-                    <>
-                      Modular PHP architecture with MVC pattern, REST API endpoints for external 
-                      integration, and MySQL relational structure ensuring data consistency and performance.
-                    </>
-                  ) : project.caseStudy === 'gemify' ? (
-                    <>
-                      Flutter mobile app integrated with Firebase backend and Firestore real-time database. 
-                      Includes push notification system, secure authentication modules, and modular 
-                      architecture for scalable feature development.
-                    </>
-                  ) : null}
-                </p>
               </div>
 
               {/* Links */}

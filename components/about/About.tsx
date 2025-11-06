@@ -7,10 +7,10 @@ export default function About() {
         {/* Left Side: Career Journey */}
         <div className="flex flex-col justify-center">
           <p className="text-lg text-gray-400 mb-4 leading-relaxed text-justify">
-            I'm a passionate Web Developer building fast, responsive, and secure web applications. My expertise lies in creating robust e-commerce platforms, dashboards, and interactive user interfaces using modern web technologies.
+I’m a passionate designer focused on creating practical and visually engaging solutions. With expertise in UI/UX design, branding, and digital content, I craft experiences that blend creativity with usability.
           </p>
           <p className="text-lg text-gray-400 mb-4 leading-relaxed text-justify">
-            My journey began with a curiosity about how the web works and how to deliver seamless digital experiences. I've specialized in front-end and full-stack development, working with technologies such as React, Next.js, Node.js, and MongoDB, and implementing best practices in performance optimization, security, and accessibility.
+        My journey began with a curiosity about how the web works and how to deliver seamless digital experiences. Over time, I’ve specialized in front-end and full-stack development using React, Next.js, Node.js, and MongoDB, while integrating design tools like Figma, Adobe Suite, and AI-assisted workflows to create modern, high-quality, and performance-driven solutions focused on accessibility, security, and user experience.
           </p>
           <p className="text-lg text-gray-400 mb-4 leading-relaxed text-justify">
             Currently, I work on diverse web projects, focusing on delivering user-friendly, high-performance applications that businesses and users rely on daily.
