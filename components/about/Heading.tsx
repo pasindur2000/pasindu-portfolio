@@ -5,7 +5,7 @@ function Heading() {
     <div className="py-16 sm:py-20 w-full text-center relative max-w-5xl mx-auto">
       {/* Name */}
       <h1 className="text-2xl sm:text-5xl font-bold inline-block w-auto mb-6 relative">
-        Aruni Nethmini
+       Pasindu Rathnathilake
         <img
           className="sqD w-12 -top-6 -right-8 absolute"
           src="/static/doodles/skills/fillStar.svg"

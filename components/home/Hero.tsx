@@ -8,10 +8,10 @@ function Hero() {
         className="relative heroElem w-full pt-20 pb-40 m-auto flex justify-center text-center flex-col items-center z-1"
         style={{ maxWidth: "1200px" }}
       >
-        <p className="text-xl mb-5">Aruni Nethmini</p>
+        <p className="text-xl mb-5"> Pasindu Rathnathilake</p>
         <h1 className="heroTitle inline-block max-w-2xl lg:max-w-4xl  w-auto relative text-3xl md:text-4xl lg:text-5xl tracking-tighter mb-10 font-bold heroShinyBg">
           Focused on  <span className="heroShiny1 text-fun-pink">developing</span> and{" "}
-          <span className="heroShiny2 text-fun-pink">designing seamless</span> web experiences.
+          <span className="heroShiny2 text-fun-pink">designing seamless</span> mobile experiences.
           
           <img
             className="sqD squiggle-hero-html w-16 top-[-90px] right-[5%] sm:top-[-90px] sm:right-[170px]"
