@@ -17,7 +17,7 @@ function Navbar() {
               src="/static/logos/logo_no_text.svg"
               width="60"
             />
-            {"WebRatz".split("").map((letter, index) => (
+            {"PixelST".split("").map((letter, index) => (
               <span
                 key={index}
                 className="hover:text-fun-pink hover:-mt-2 transition-all duration-500 hover:duration-100 click:goodbyeLetterAnim"

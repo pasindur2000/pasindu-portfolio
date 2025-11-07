@@ -63,54 +63,66 @@ function ProjectCard({ project }: { project: Project }) {
   // Get case study content based on project title or caseStudy field
   const getCaseStudyContent = () => {
     // First priority: Check if project has custom fields defined
-    if (project.role || project.overview || project.problem || project.solution) {
+    if (project.role && project.overview && project.problem && project.solution) {
       return {
-        role: project.role || 'Developer',
-        overview: project.overview || project.desc,
-        problem: project.problem || 'This project addressed specific business challenges.',
-        solution: project.solution || `${project.title} provides an effective solution.`
+        role: project.role,
+        overview: project.overview,
+        problem: project.problem,
+        solution: project.solution
       };
     }
 
     // Second priority: Match by title or caseStudy field
-    const projectIdentifier = (project.title.toLowerCase() + ' ' + (project.caseStudy || '')).toLowerCase();
+    const titleLower = project.title.toLowerCase();
+    const caseStudyLower = (project.caseStudy || '').toLowerCase();
+    const projectIdentifier = titleLower + ' ' + caseStudyLower;
 
-    // Order Management System (OMS)
-    if (projectIdentifier.includes('order management') || projectIdentifier.includes('oms')) {
+    // EPITONI (Promotion App)
+    if (projectIdentifier.includes('epitoni') || projectIdentifier.includes('promotion')) {
       return {
-        role: 'Full stack Developer',
-        overview: 'A scalable Order Management System (OMS), built to streamline workflows, manage inventory, and optimize order tracking and delivery with a responsive full-stack architecture using PHP, MySQL, and React.',
-        problem: 'Managing orders across multiple Sri Lankan couriers can be time-consuming and error-prone, with manual tracking, delayed updates, and difficulty handling delivery issues.',
-        solution: 'A smart Order Management System (OMS) that integrates with multiple courier APIs to automatically track orders, update statuses in real time, and simplify overall delivery management.'
+        role: 'Full Stack Developer',
+        overview: 'A personalized promotion platform that lets users select their interests like favorite brands, cities, events, hobbies, shopping malls, and places to visit.',
+        problem: 'Users often receive generic promotions that arent relevant to their interests, making it hard to discover offers or experiences they actually care about.',
+        solution: 'The app intelligently matches users interests with promotional posts from restaurants and shops, showing only tailored offers and experiences that fit their preferences.'
       };
     }
 
-    // Gemify App
-    if (projectIdentifier.includes('gemify')) {
+    // Mathru App
+    if (projectIdentifier.includes('mathru')) {
       return {
-        role: 'Frontend Developer (UI & UX Design)',
+        role: 'Mobile Developer',
+        overview: 'An AI-powered pregnancy tracking app that supports expecting mothers with personalized insights, symptom analysis, and real-time guidance.',
+        problem: 'Many expecting mothers lack access to continuous health guidance and struggle to track symptoms and baby development accurately.',
+        solution: 'Mathru provides smart symptom analysis, emotional support, and personalized recommendations — helping mothers monitor their health and their babys growth with real-time updates and doctor connectivity.'
+      };
+    }
+
+    // Vegetable Disease Detection App
+    if (projectIdentifier.includes('vegetable') || projectIdentifier.includes('disease detection')) {
+      return {
+        role: 'Mobile Developer',
+        overview: 'A smart mobile application that leverages artificial intelligence and 3D scanning technology to detect diseases in vegetables, helping farmers and agricultural professionals identify plant health issues quickly and accurately.',
+        problem: 'Farmers struggle to identify vegetable diseases early, leading to crop loss and reduced yields. Traditional diagnosis methods are time-consuming and require expert knowledge.',
+        solution: 'The app uses machine learning and 3D scanning to instantly analyze vegetable health, providing accurate disease detection and treatment recommendations in real-time.'
+      };
+    }
+
+    // Notebook Mobile App (Gemify)
+    if (projectIdentifier.includes('notebook') || projectIdentifier.includes('gemify')) {
+      return {
+        role: 'Frontend Developer',
         overview: 'A modern, fully redesigned mobile application that enhances the Gemify platform with new functionalities and a refined user experience. The app focuses on seamless performance, responsive design, and real-time interaction to deliver an optimized gem trading and management experience.',
-        problem: 'Gem traders and businessmen needed a simple yet powerful tool to manage and grow their gem business efficiently.',
-        solution: 'A redesigned mobile app enhancing the Gemify platform with improved performance, real-time interaction, and an optimized user experience.'
-      };
-    }
-
-    // Fardar Express Logistics
-    if (projectIdentifier.includes('fardar') || projectIdentifier.includes('express logistics')) {
-      return {
-        role: 'Web Developer (UI & UX Design)',
-        overview: 'Enhanced website for a global logistics partner with a clear, fast, and smooth user experience.',
-        problem: 'The previous logistics website lacked clear navigation, speed, and overall usability.',
-        solution: 'An enhanced website designed for a global logistics partner, offering a clear, fast, and seamless user experience.'
+        problem: 'Gem traders and businessmen needed a simple yet powerful tool to manage and grow their gem business efficiently, with better stock management and real-time updates.',
+        solution: 'A redesigned mobile app enhancing the Gemify platform with improved performance, real-time interaction, intuitive stock management, and an optimized user experience for gem traders.'
       };
     }
 
     // Default fallback
-    return {
-      role: 'Web Developer',
+    return { 
+      role: 'Mobile Developer',
       overview: project.desc,
-      problem: 'This project addressed specific business challenges and requirements.',
-      solution: `${project.title} was developed to provide an effective solution with modern technologies and best practices.`
+      problem: 'This project addressed specific challenges in its domain.',
+      solution: `${project.title} provides an effective solution with modern technologies.`
     };
   };
 

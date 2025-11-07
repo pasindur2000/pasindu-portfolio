@@ -5,8 +5,8 @@ const CTA_CONTENT = {
   subHeading:
     "Have a project in mind? Let's create something amazing together and build a seamless, user-friendly digital experience that brings your ideas to life.",
   contactInfo: {
-    email: "nethminiaruni@gmail.com",
-    phone: "+94 77 407 1013",
+    email: "pasindurathnathilake19@gmail.com",
+    phone: "+(94) 70 2027 128",
     location: "Colombo, Sri Lanka",
   },
   whyWorkWithMe: [

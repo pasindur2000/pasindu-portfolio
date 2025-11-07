@@ -5,7 +5,7 @@ function More() {
     <div className="py-20 flex justify-center gap-10"> {/* increased gap from 6 to 10 */}
       {/* GitHub */}
       <a
-        href="https://github.com/Aruni2000"
+        href="https://github.com/pasindur2000"
         target="_blank"
         rel="noopener noreferrer"
         className="text-gray-600 hover:text-blue-600 transition-colors duration-300"

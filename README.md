@@ -1,6 +1,6 @@
-# **Aruni Nethimini – Portfolio**
+# **Pasindu Rathanathilake – Portfolio**
 
-Hey there! I'm **Aruni Nethimini**, and this is my personal portfolio built using **React, NextJS, and TailwindCSS**!
+Hey there! I'm **Pasindu Rathanathilake**, and this is my personal portfolio built using **React, NextJS, and TailwindCSS**!
 
 ## Guidelines
 

@@ -46,18 +46,18 @@ function Footer() {
           </h4>
           <div className="space-y-3 mt-4 w-full flex items-center sm:items-start flex-col">
             <a
-              href="mailto:nethminiaruni@gmail.com"
+              href="mailto:pasindurathnathilake19@gmail.com"
               className="text-fun-gray-light hover:text-fun-pink transition-colors flex items-center gap-2"
             >
               <span>📧</span>
-              <span>nethminiaruni@gmail.com</span>
+              <span>pasindurathnathilake19@gmail.com</span>
             </a>
             <a
-              href="tel:+94774071013"
+              href="tel:+(94)70 2027 128"
               className="text-fun-gray-light hover:text-fun-pink transition-colors flex items-center gap-2"
             >
               <span>📱</span>
-              <span>+94 77 407 1013</span>
+              <span>+(94) 70 2027 128</span>
             </a>
             <div className="text-fun-gray-light flex items-center gap-2">
               <span>📍</span>
@@ -101,10 +101,10 @@ function Footer() {
           <div className="mt-2 text-xs ">
             Made by{" "}
             <a
-              href="nethminiaruni@gmail.com"
+              href="pasindurathnathilake19@gmail.com"
               className="text-fun-gray-light font-medium"
             >
-              Aruni Nethmini
+              Pasindu Rathnathilake
             </a>
             . All rights reserved.
           </div>

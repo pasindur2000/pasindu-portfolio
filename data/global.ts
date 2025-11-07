@@ -75,7 +75,7 @@ export const footer: Footer = {
       links: [
         {
           name: "GitHub",
-          link: "https://github.com/Aruni2000",
+          link: "https://github.com/pasindur2000",
           icon: "/static/icons/github-f.svg",
           leavesWebsite: true,
         },
@@ -99,7 +99,7 @@ export const footer: Footer = {
         },
         {
           name: "Email",
-          link: "nethminiaruni@gmail.com",
+          link: "pasindurathnathilake19@gmail.com",
           icon: "/static/icons/mail-f.svg",
           leavesWebsite: true,
         },
@@ -109,6 +109,6 @@ export const footer: Footer = {
   support: {
     buymeacoffee: "braydenw",
     paypal: "braydentw",
-    message: "I appreciate your support very much! 💙",
+    message: "I appreciate your support very much! ",
   },
 };
