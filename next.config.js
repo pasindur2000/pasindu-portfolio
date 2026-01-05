@@ -4,15 +4,21 @@ const repoName = "pasindu-portfolio"; // replace with your GitHub repo name
 module.exports = {
   swcMinify: true,
 
+  // Set basePath for GitHub Pages
+  basePath: isProd ? `/${repoName}` : "",
+
+  // Set assetPrefix to match basePath
+  assetPrefix: isProd ? `/${repoName}/` : "",
+
   // Use a static-export-friendly image loader
   images: {
-    loader: "akamai", // compatible with `next export`
-    path: "", // required for static export
+    loader: "akamai",
+    path: "",
     unoptimized: true,
   },
 
-  // Fix CSS/JS paths for GitHub Pages
-  assetPrefix: isProd ? `/${repoName}/` : "",
+  // Optional: Add trailing slash for better compatibility
+  trailingSlash: true,
 
   async redirects() {
     return [
