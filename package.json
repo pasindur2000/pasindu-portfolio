@@ -1,6 +1,6 @@
 {
   "private": true,
-  "homepage": "https://pasindur2000.github.io/pasindu-portfolio",
+  "homepage": "https://pasindur2000.github.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
