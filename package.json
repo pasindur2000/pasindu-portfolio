@@ -1,5 +1,6 @@
 {
   "private": true,
+  "homepage": "https://pasindur2000.github.io/pasindu-portfolio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +12,7 @@
     "@tailwindcss/forms": "^0.5.2",
     "contentlayer": "^0.1.0",
     "gray-matter": "^4.0.3",
-    "next": "12.0.7",
+    "next": "^12.0.7",
     "next-contentlayer": "^0.1.0",
     "next-mdx-remote": "^3.0.7",
     "react": "^17.0.2",
