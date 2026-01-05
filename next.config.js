@@ -8,6 +8,7 @@ module.exports = {
   images: {
     loader: "akamai", // compatible with `next export`
     path: "", // required for static export
+    unoptimized: true,
   },
 
   // Fix CSS/JS paths for GitHub Pages
