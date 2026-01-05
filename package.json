@@ -1,11 +1,12 @@
 {
   "private": true,
-  "homepage": "https://pasindur2000.github.io",
+  "homepage": "https://pasindur2000.github.io/pasindu-portfolio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
-    "deploy": "next build && next export",
+    "predeploy": "next build && next export",
+    "deploy": "gh-pages -d out",
     "start": "next start",
     "serve": "next serve"
   },
