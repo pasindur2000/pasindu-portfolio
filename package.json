@@ -6,7 +6,7 @@
     "build": "next build",
     "export": "next export",
     "predeploy": "next build && next export",
-    "deploy": "gh-pages -d out --force",
+    "deploy": "gh-pages -d out",
     "start": "next start",
     "serve": "next serve"
   },
