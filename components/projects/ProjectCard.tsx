@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import { kebabCase } from "@/utils/utils";
 import Link from "next/link";
 
@@ -27,7 +26,10 @@ function ProjectCard({ project }: { project: Project }) {
   // Handle outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -63,66 +65,92 @@ function ProjectCard({ project }: { project: Project }) {
   // Get case study content based on project title or caseStudy field
   const getCaseStudyContent = () => {
     // First priority: Check if project has custom fields defined
-    if (project.role && project.overview && project.problem && project.solution) {
+    if (
+      project.role &&
+      project.overview &&
+      project.problem &&
+      project.solution
+    ) {
       return {
         role: project.role,
         overview: project.overview,
         problem: project.problem,
-        solution: project.solution
+        solution: project.solution,
       };
     }
 
     // Second priority: Match by title or caseStudy field
     const titleLower = project.title.toLowerCase();
-    const caseStudyLower = (project.caseStudy || '').toLowerCase();
-    const projectIdentifier = titleLower + ' ' + caseStudyLower;
+    const caseStudyLower = (project.caseStudy || "").toLowerCase();
+    const projectIdentifier = titleLower + " " + caseStudyLower;
 
     // EPITONI (Promotion App)
-    if (projectIdentifier.includes('epitoni') || projectIdentifier.includes('promotion')) {
+    if (
+      projectIdentifier.includes("epitoni") ||
+      projectIdentifier.includes("promotion")
+    ) {
       return {
-        role: 'Full Stack Developer',
-        overview: 'A personalized promotion platform that lets users select their interests like favorite brands, cities, events, hobbies, shopping malls, and places to visit.',
-        problem: 'Users often receive generic promotions that arent relevant to their interests, making it hard to discover offers or experiences they actually care about.',
-        solution: 'The app intelligently matches users interests with promotional posts from restaurants and shops, showing only tailored offers and experiences that fit their preferences.'
+        role: "Full Stack Developer",
+        overview:
+          "A personalized promotion platform that lets users select their interests like favorite brands, cities, events, hobbies, shopping malls, and places to visit.",
+        problem:
+          "Users often receive generic promotions that arent relevant to their interests, making it hard to discover offers or experiences they actually care about.",
+        solution:
+          "The app intelligently matches users interests with promotional posts from restaurants and shops, showing only tailored offers and experiences that fit their preferences.",
       };
     }
 
     // Mathru App
-    if (projectIdentifier.includes('mathru')) {
+    if (projectIdentifier.includes("mathru")) {
       return {
-        role: 'Mobile Developer',
-        overview: 'An AI-powered pregnancy tracking app that supports expecting mothers with personalized insights, symptom analysis, and real-time guidance.',
-        problem: 'Many expecting mothers lack access to continuous health guidance and struggle to track symptoms and baby development accurately.',
-        solution: 'Mathru provides smart symptom analysis, emotional support, and personalized recommendations — helping mothers monitor their health and their babys growth with real-time updates and doctor connectivity.'
+        role: "Mobile Developer",
+        overview:
+          "An AI-powered pregnancy tracking app that supports expecting mothers with personalized insights, symptom analysis, and real-time guidance.",
+        problem:
+          "Many expecting mothers lack access to continuous health guidance and struggle to track symptoms and baby development accurately.",
+        solution:
+          "Mathru provides smart symptom analysis, emotional support, and personalized recommendations — helping mothers monitor their health and their babys growth with real-time updates and doctor connectivity.",
       };
     }
 
     // Vegetable Disease Detection App
-    if (projectIdentifier.includes('vegetable') || projectIdentifier.includes('disease detection')) {
+    if (
+      projectIdentifier.includes("vegetable") ||
+      projectIdentifier.includes("disease detection")
+    ) {
       return {
-        role: 'Mobile Developer',
-        overview: 'A smart mobile application that leverages artificial intelligence and 3D scanning technology to detect diseases in vegetables, helping farmers and agricultural professionals identify plant health issues quickly and accurately.',
-        problem: 'Farmers struggle to identify vegetable diseases early, leading to crop loss and reduced yields. Traditional diagnosis methods are time-consuming and require expert knowledge.',
-        solution: 'The app uses machine learning and 3D scanning to instantly analyze vegetable health, providing accurate disease detection and treatment recommendations in real-time.'
+        role: "Mobile Developer",
+        overview:
+          "A smart mobile application that leverages artificial intelligence and 3D scanning technology to detect diseases in vegetables, helping farmers and agricultural professionals identify plant health issues quickly and accurately.",
+        problem:
+          "Farmers struggle to identify vegetable diseases early, leading to crop loss and reduced yields. Traditional diagnosis methods are time-consuming and require expert knowledge.",
+        solution:
+          "The app uses machine learning and 3D scanning to instantly analyze vegetable health, providing accurate disease detection and treatment recommendations in real-time.",
       };
     }
 
     // Notebook Mobile App (Gemify)
-    if (projectIdentifier.includes('notebook') || projectIdentifier.includes('gemify')) {
+    if (
+      projectIdentifier.includes("notebook") ||
+      projectIdentifier.includes("gemify")
+    ) {
       return {
-        role: 'Frontend Developer',
-        overview: 'A modern, fully redesigned mobile application that enhances the Gemify platform with new functionalities and a refined user experience. The app focuses on seamless performance, responsive design, and real-time interaction to deliver an optimized gem trading and management experience.',
-        problem: 'Gem traders and businessmen needed a simple yet powerful tool to manage and grow their gem business efficiently, with better stock management and real-time updates.',
-        solution: 'A redesigned mobile app enhancing the Gemify platform with improved performance, real-time interaction, intuitive stock management, and an optimized user experience for gem traders.'
+        role: "Frontend Developer",
+        overview:
+          "A modern, fully redesigned mobile application that enhances the Gemify platform with new functionalities and a refined user experience. The app focuses on seamless performance, responsive design, and real-time interaction to deliver an optimized gem trading and management experience.",
+        problem:
+          "Gem traders and businessmen needed a simple yet powerful tool to manage and grow their gem business efficiently, with better stock management and real-time updates.",
+        solution:
+          "A redesigned mobile app enhancing the Gemify platform with improved performance, real-time interaction, intuitive stock management, and an optimized user experience for gem traders.",
       };
     }
 
     // Default fallback
-    return { 
-      role: 'Mobile Developer',
+    return {
+      role: "Mobile Developer",
       overview: project.desc,
-      problem: 'This project addressed specific challenges in its domain.',
-      solution: `${project.title} provides an effective solution with modern technologies.`
+      problem: "This project addressed specific challenges in its domain.",
+      solution: `${project.title} provides an effective solution with modern technologies.`,
     };
   };
 
@@ -161,8 +189,8 @@ function ProjectCard({ project }: { project: Project }) {
           <div className="space-x-2 flex items-center">
             {project.link && (
               <a href={project.link} target="_blank" rel="noreferrer">
-                <Image
-                  src="/static/icons/external-link.svg"
+                <img
+                  src="/pasindu-portfolio/static/icons/external-link.svg"
                   width={16}
                   height={16}
                   alt="Link Icon"
@@ -171,8 +199,8 @@ function ProjectCard({ project }: { project: Project }) {
             )}
             {project.github && (
               <a href={project.github} target="_blank" rel="noreferrer">
-                <Image
-                  src="/static/icons/github.svg"
+                <img
+                  src="/pasindu-portfolio/static/icons/github.svg"
                   width={16}
                   height={16}
                   alt="Github Icon"

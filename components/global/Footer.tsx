@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { footer } from "@/data/global";
-import Image from "next/image";
 
 function Footer() {
   return (
@@ -25,7 +24,12 @@ function Footer() {
                         >
                           {item.icon && (
                             <span className="pr-2 -mb-1">
-                              <Image src={item.icon} width={20} height={20} />
+                              <img
+                                src={item.icon}
+                                width={20}
+                                height={20}
+                                alt=""
+                              />
                             </span>
                           )}
                           {item.name}
@@ -42,7 +46,7 @@ function Footer() {
         })}
         <div className="text-center col-span-2 sm:col-auto sm:text-left pt-8 sm:mt-0 sm:pt-0 text-fun-gray border-t border-fun-pink-dark sm:border-0">
           <h4 className="uppercase text-fun-gray text-sm font-bold">
-           Get In Touch
+            Get In Touch
           </h4>
           <div className="space-y-3 mt-4 w-full flex items-center sm:items-start flex-col">
             <a
